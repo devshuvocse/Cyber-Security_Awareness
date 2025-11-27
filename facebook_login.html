@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Educational phishing simulation for cybersecurity training">
+    <title>Facebook – log in or sign up</title>
+    <link rel="stylesheet" href="facebook_styles.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>">
+</head>
+
+<body>
+    <!-- Educational Disclaimer Banner -->
+    <div class="disclaimer-banner" id="disclaimer">
+        <div class="disclaimer-content">
+            <div class="warning-badge">
+                <svg class="warning-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                    </path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                <strong>CYBERSECURITY TRAINING</strong>
+            </div>
+            <div class="warning-text">
+                This is an educational simulation. <strong>DO NOT</strong> enter real passwords. For training purposes
+                only.
+            </div>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="container">
+            <!-- Left side - Branding -->
+            <div class="branding-section">
+                <div class="logo-wrapper">
+                    <h1 class="logo">facebook</h1>
+                </div>
+                <p class="tagline">Facebook helps you connect and share with the people in your life.</p>
+            </div>
+
+            <!-- Right side - Login Form -->
+            <div class="login-section">
+                <div class="login-card">
+                    <form action="/submit-login" method="POST" class="login-form" id="loginForm">
+                        <div class="input-wrapper">
+                            <input type="text" name="username" id="username" placeholder="Email address or phone number"
+                                class="input-field" autocomplete="username" required>
+                        </div>
+
+                        <div class="input-wrapper">
+                            <input type="password" name="password" id="password" placeholder="Password"
+                                class="input-field" autocomplete="current-password" required>
+                        </div>
+
+                        <button type="submit" class="login-button">
+                            <span class="button-text">Log in</span>
+                            <span class="button-loader" style="display: none;">
+                                <svg width="20" height="20" viewBox="0 0 50 50"
+                                    style="animation: spin 1s linear infinite;">
+                                    <circle cx="25" cy="25" r="20" fill="none" stroke="white" stroke-width="5"
+                                        stroke-dasharray="31.4 31.4" stroke-linecap="round"></circle>
+                                </svg>
+                            </span>
+                        </button>
+
+                        <a href="#" class="forgot-password">Forgotten password?</a>
+
+                        <div class="divider"></div>
+
+                        <button type="button" class="create-account-button"
+                            onclick="alert('Educational simulation - This is not real Facebook')">
+                            Create new account
+                        </button>
+                    </form>
+                </div>
+
+                <p class="create-page">
+                    <a href="#" onclick="alert('Educational simulation only'); return false;"><strong>Create a
+                            Page</strong></a> for a celebrity, brand or business.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-wrapper">
+            <div class="footer-content">
+                <!-- Educational Warning Box -->
+                <div class="education-notice">
+                    <div class="notice-icon">🛡️</div>
+                    <div class="notice-content">
+                        <strong>EDUCATIONAL SIMULATION</strong>
+                        <p>This demonstrates how phishing attacks work. Always verify URLs and never enter real
+                            credentials on suspicious websites.</p>
+                    </div>
+                </div>
+
+                <!-- Language Links -->
+                <div class="footer-links">
+                    <a href="#">English (UK)</a>
+                    <a href="#">বাংলা</a>
+                    <a href="#">हिन्दी</a>
+                    <a href="#">اردو</a>
+                    <a href="#">নেপালী</a>
+                    <a href="#">ଓଡ଼ିଆ</a>
+                    <a href="#">Español</a>
+                    <a href="#">Português (Brasil)</a>
+                    <a href="#">Français (France)</a>
+                    <a href="#">Deutsch</a>
+                    <a href="#">Italiano</a>
+                    <button class="show-more-lang">+</button>
+                </div>
+
+                <div class="divider-line"></div>
+
+                <!-- Footer Navigation Links -->
+                <div class="footer-nav">
+                    <a href="#">Sign Up</a>
+                    <a href="#">Log In</a>
+                    <a href="#">Messenger</a>
+                    <a href="#">Facebook Lite</a>
+                    <a href="#">Video</a>
+                    <a href="#">Places</a>
+                    <a href="#">Games</a>
+                    <a href="#">Marketplace</a>
+                    <a href="#">Meta Pay</a>
+                    <a href="#">Meta Store</a>
+                    <a href="#">Meta Quest</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Threads</a>
+                    <a href="#">Fundraisers</a>
+                    <a href="#">Services</a>
+                    <a href="#">Voting Information Centre</a>
+                    <a href="#">About</a>
+                    <a href="#">Create ad</a>
+                    <a href="#">Create Page</a>
+                    <a href="#">Developers</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Cookies</a>
+                    <a href="#">Ad Choices</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Help</a>
+                </div>
+
+                <div class="copyright">
+                    Meta © 2025 • <span class="sim-notice">Educational Phishing Simulation</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth form submission animation
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            const button = this.querySelector('.login-button');
+            const buttonText = button.querySelector('.button-text');
+            const buttonLoader = button.querySelector('.button-loader');
+
+            buttonText.style.display = 'none';
+            buttonLoader.style.display = 'inline-block';
+            button.disabled = true;
+        });
+
+        // Add focus animations
+        document.querySelectorAll('.input-field').forEach(input => {
+            input.addEventListener('focus', function () {
+                this.parentElement.classList.add('focused');
+            });
+
+            input.addEventListener('blur', function () {
+                this.parentElement.classList.remove('focused');
+            });
+        });
+
+        // Prevent accidental link clicks
+        document.querySelectorAll('a[href="#"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+            });
+        });
+    </script>
+</body>
+
+</html>

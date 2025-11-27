@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueBook - Connect with Friends</title>
+    <link rel="stylesheet" href="bluebook_styles.css">
+</head>
+<body>
+    <!-- Educational Disclaimer Banner -->
+    <div class="disclaimer-banner">
+        <div class="disclaimer-content">
+            <svg class="warning-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+            <strong>EDUCATIONAL SIMULATION:</strong> This is a cybersecurity learning simulation. Do NOT enter real passwords. This is for training purposes only.
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Left side - Branding -->
+        <div class="branding-section">
+            <h1 class="logo">BlueBook</h1>
+            <p class="tagline">Connect with friends and the world around you on BlueBook.</p>
+        </div>
+
+        <!-- Right side - Login Form -->
+        <div class="login-section">
+            <div class="login-card">
+                <form action="/login" method="POST" class="login-form">
+                    <input 
+                        type="text" 
+                        name="username" 
+                        placeholder="Email or phone number" 
+                        class="input-field"
+                        required
+                    >
+                    
+                    <input 
+                        type="password" 
+                        name="password" 
+                        placeholder="Password" 
+                        class="input-field"
+                        required
+                    >
+                    
+                    <button type="submit" class="login-button">Log In</button>
+                    
+                    <div class="divider">
+                        <span>or</span>
+                    </div>
+                    
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </form>
+            </div>
+            
+            <div class="signup-card">
+                <p class="signup-text">Don't have an account? <a href="#" class="signup-link">Sign Up</a></p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="education-notice">
+                ⚠️ <strong>Educational Purpose Only:</strong> This simulation demonstrates how phishing attacks work. 
+                Never enter real credentials on suspicious websites.
+            </p>
+            <p class="copyright">© 2025 BlueBook - Cybersecurity Training Simulation</p>
+        </div>
+    </footer>
+</body>
+</html>

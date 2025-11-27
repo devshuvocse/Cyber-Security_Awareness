@@ -1,0 +1,617 @@
+/* Enhanced Facebook-Style Login - Educational Simulation */
+
+/* CSS Variables for consistent theming */
+:root {
+    --fb-blue: #1877f2;
+    --fb-blue-hover: #166fe5;
+    --fb-blue-active: #1464d4;
+    --fb-green: #42b72a;
+    --fb-green-hover: #36a420;
+    --fb-bg: #f0f2f5;
+    --fb-text: #1c1e21;
+    --fb-text-secondary: #65676b;
+    --fb-border: #dddfe2;
+    --fb-white: #ffffff;
+    --warning-red: #dc3545;
+    --warning-bg: #fff3cd;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: var(--fb-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--fb-text);
+    line-height: 1.34;
+}
+
+/* Educational Disclaimer Banner */
+.disclaimer-banner {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    padding: 16px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 4px solid #a93226;
+    animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.disclaimer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.warning-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 16px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.warning-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    stroke: white;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.warning-text {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Main Wrapper */
+.main-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Main Container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 72px 20px;
+    gap: 120px;
+    max-width: 980px;
+    margin: 0 auto;
+    width: 100%;
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Branding Section (Left) */
+.branding-section {
+    flex: 1;
+    max-width: 580px;
+    padding-bottom: 112px;
+}
+
+.logo-wrapper {
+    margin-bottom: 16px;
+}
+
+.logo {
+    font-size: 60px;
+    font-weight: 700;
+    color: var(--fb-blue);
+    margin-left: -3px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    animation: fadeInLeft 0.8s ease-out;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.tagline {
+    font-size: 28px;
+    color: var(--fb-text);
+    line-height: 32px;
+    font-weight: 400;
+    animation: fadeInLeft 0.8s ease-out 0.2s both;
+}
+
+/* Login Section (Right) */
+.login-section {
+    flex: 0 0 396px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    animation: fadeInRight 0.8s ease-out;
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.login-card {
+    background: var(--fb-white);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+        0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.login-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12),
+        0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.input-wrapper {
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.input-wrapper.focused {
+    transform: scale(1.01);
+}
+
+.input-field {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 17px;
+    border: 1px solid var(--fb-border);
+    border-radius: 6px;
+    outline: none;
+    transition: all 0.2s ease;
+    background: var(--fb-white);
+}
+
+.input-field:focus {
+    border-color: var(--fb-blue);
+    box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+}
+
+.input-field::placeholder {
+    color: #8a8d91;
+}
+
+.login-button {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--fb-white);
+    background-color: var(--fb-blue);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 6px;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.login-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.login-button:hover {
+    background-color: var(--fb-blue-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(24, 119, 242, 0.3);
+}
+
+.login-button:active {
+    background-color: var(--fb-blue-active);
+    transform: translateY(0);
+}
+
+.login-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.button-text,
+.button-loader {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.forgot-password {
+    text-align: center;
+    color: var(--fb-blue);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 0;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+    background: rgba(24, 119, 242, 0.05);
+}
+
+.divider {
+    border-bottom: 1px solid var(--fb-border);
+    margin: 12px 0;
+}
+
+.create-account-button {
+    width: auto;
+    padding: 14px 48px;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--fb-white);
+    background-color: var(--fb-green);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    align-self: center;
+    margin-top: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+.create-account-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.create-account-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.create-account-button:hover {
+    background-color: var(--fb-green-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(66, 183, 42, 0.3);
+}
+
+.create-account-button:active {
+    transform: translateY(0);
+}
+
+/* Create Page Link */
+.create-page {
+    text-align: center;
+    font-size: 14px;
+    color: var(--fb-text);
+}
+
+.create-page a {
+    color: var(--fb-text);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.create-page a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+.footer {
+    background: var(--fb-white);
+    padding: 20px 16px;
+    margin-top: auto;
+    border-top: 1px solid var(--fb-border);
+}
+
+.footer-wrapper {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.footer-content {
+    width: 100%;
+}
+
+/* Educational Notice */
+.education-notice {
+    background: linear-gradient(135deg, #fff9e6 0%, #ffe8cc 100%);
+    border: 2px solid #ffb347;
+    border-left: 6px solid var(--warning-red);
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.notice-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.notice-content {
+    flex: 1;
+}
+
+.notice-content strong {
+    display: block;
+    color: var(--warning-red);
+    font-size: 15px;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+.notice-content p {
+    color: #856404;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Footer Links */
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 12px;
+    padding: 12px 0;
+    align-items: center;
+}
+
+.footer-links a,
+.show-more-lang {
+    color: #8a8d91;
+    text-decoration: none;
+    font-size: 12px;
+    transition: color 0.2s ease;
+}
+
+.show-more-lang {
+    background: #f5f6f7;
+    border: 1px solid #ccd0d5;
+    padding: 3px 8px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.footer-links a:hover,
+.show-more-lang:hover {
+    text-decoration: underline;
+    color: var(--fb-text-secondary);
+}
+
+.divider-line {
+    border-bottom: 1px solid var(--fb-border);
+    margin: 8px 0;
+}
+
+.footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    padding: 8px 0;
+}
+
+.footer-nav a {
+    color: #8a8d91;
+    text-decoration: none;
+    font-size: 12px;
+    transition: color 0.2s ease;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
+}
+
+.copyright {
+    padding-top: 16px;
+    font-size: 11px;
+    color: #8a8d91;
+}
+
+.sim-notice {
+    color: var(--warning-red);
+    font-weight: 700;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        gap: 40px;
+        padding: 40px 20px;
+    }
+
+    .branding-section {
+        text-align: center;
+        padding-bottom: 0;
+    }
+
+    .logo {
+        font-size: 50px;
+        margin-left: 0;
+    }
+
+    .tagline {
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    .login-section {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 396px;
+    }
+
+    .disclaimer-content {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .warning-badge {
+        align-self: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .disclaimer-banner {
+        padding: 12px 16px;
+    }
+
+    .warning-text {
+        font-size: 12px;
+    }
+
+    .container {
+        padding: 30px 16px;
+    }
+
+    .logo {
+        font-size: 40px;
+    }
+
+    .tagline {
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .login-section {
+        max-width: 100%;
+    }
+
+    .login-card {
+        padding: 16px;
+    }
+
+    .create-account-button {
+        padding: 14px 32px;
+        font-size: 16px;
+    }
+
+    .footer-links,
+    .footer-nav {
+        justify-content: center;
+    }
+
+    .education-notice {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .notice-icon {
+        font-size: 28px;
+    }
+}
